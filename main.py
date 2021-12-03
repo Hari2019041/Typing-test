@@ -16,10 +16,10 @@ def display_text(stdscr, target, current, wpm=0):
 
     for i, char in enumerate(current):
         correct_char = target[i]
-        if current[i] == correct_char:
-            stdscr.addstr(0, i, char, curses.color_pair(1))
-        else:
-            stdscr.addstr(0, i, char, curses.color_pair(2))
+        color = curses.color_pair(1)
+        if current[i] != correct_char:
+            color = curses.color_pair(2)
+        stdscr.addstr(0, i, char, color)
 
 def wpm_test(stdscr):
     target_text = "This is a typing test to test how fast you can type."
